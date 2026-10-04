@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart EV Charging Allocator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>Smart EV Charging Allocator</h1>
+        <p>DSA-Based EV Charging Management System</p>
+    </div>
+    <span class="online">● System Online</span>
+</header>
+
+<main>
+
+    <!-- SUMMARY -->
+    <section class="cards">
+        <div class="card">
+            <small>Total Vehicles</small>
+            <b id="total">5</b>
+        </div>
+
+        <div class="card">
+            <small>Chargers</small>
+            <b>2</b>
+        </div>
+
+        <div class="card">
+            <small>Served</small>
+            <b id="served">0</b>
+        </div>
+
+        <div class="card">
+            <small>Lost</small>
+            <b id="lost">0</b>
+        </div>
+    </section>
+
+
+    <!-- CONTROL -->
+    <section class="panel">
+        <h2>Simulation Control</h2>
+
+        <div class="controls">
+            <select id="strategy">
+                <option value="fifo">FIFO</option>
+                <option value="shortest">Shortest Charge First</option>
+                <option value="battery">Lowest Battery First</option>
+                <option value="emergency">Emergency + Aging</option>
+            </select>
+
+            <button onclick="runSimulation()">Run Simulation</button>
+        </div>
+    </section>
+
+
+    <!-- METRICS -->
+    <section class="cards metrics">
+
+        <div class="card">
+            <small>Average Wait</small>
+            <b id="avg">0.00</b>
+            <small>time units</small>
+        </div>
+
+        <div class="card">
+            <small>Maximum Wait</small>
+            <b id="max">0</b>
+            <small>time units</small>
+        </div>
+
+        <div class="card">
+            <small>Utilization</small>
+            <b id="util">0%</b>
+            <small>chargers</small>
+        </div>
+
+    </section>
+
+
+    <!-- CHARGERS -->
+    <section class="panel">
+        <h2>Charger Status</h2>
+
+        <div class="chargers">
+            <div>
+                <strong>Charger 1</strong>
+                <span id="c1">Available</span>
+            </div>
+
+            <div>
+                <strong>Charger 2</strong>
+                <span id="c2">Available</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- VEHICLES -->
+    <section class="panel">
+        <h2>Vehicle Status</h2>
+        <div id="vehicles" class="vehicles"></div>
+    </section>
+
+
+    <!-- EVENT LOG -->
+    <section class="panel">
+        <h2>Simulation Event Log</h2>
+        <div id="log" class="log">
+            Run a simulation to view events.
+        </div>
+    </section>
+
+
+    <!-- COMPARISON -->
+    <section class="panel">
+        <h2>Strategy Comparison</h2>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Served</th>
+                        <th>Lost</th>
+                        <th>Avg Wait</th>
+                        <th>Max Wait</th>
+                        <th>Utilization</th>
+                    </tr>
+                </thead>
+
+                <tbody id="comparison"></tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Smart EV Charging Allocator | DSA Project
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
